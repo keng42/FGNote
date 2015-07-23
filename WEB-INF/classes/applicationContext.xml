@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 通过此文件实现了 Spring 和 Hibernate 的集成 -->
+<!-- 所有 Struts2 的 Action 类也要在此定义，从而实现 Struts2 与 Spring 集成 -->
+<!-- 指定 Spring 配置文件的 Schema 信息 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd"
+	xmlns:tx="http://www.springframework.org/schema/tx">
+
+	<!-- 定义数据源 Bean，使用 dbcp 数据源实现 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+		<property name="url" value="jdbc:mysql://localhost:3306/fgnote">
+		</property>
+		<property name="username" value="root"></property>
+		<property name="password" value="root"></property>
+	</bean>
+
+	<!-- 定义 Hibernate 的 SessionFactory -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<!-- 依賴注入数据源，注入正是上面定义的 dataSource -->
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<!-- 定义 Hibernate 的 SessionFactory 的属性 -->
+		<property name="hibernateProperties">
+			<props>
+				<!-- 数据库方言 -->
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect
+				</prop>
+			</props>
+		</property>
+		<!-- 列出全部映射文件 -->
+		<property name="mappingResources">
+			<list>
+				<value>org/erha/fgnote/vo/User.hbm.xml</value>
+				<value>org/erha/fgnote/vo/Note.hbm.xml</value>
+				<value>org/erha/fgnote/vo/Label.hbm.xml</value>
+				<value>org/erha/fgnote/vo/Quick.hbm.xml</value>
+				<value>org/erha/fgnote/vo/Notebook.hbm.xml</value>
+				<value>org/erha/fgnote/vo/Labnote.hbm.xml</value>
+			</list>
+		</property>
+	</bean>
+	<!-- 未知。。。 -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+	<!-- ========================= 定义 DAO 组件 ========================= -->
+	<!-- 基本 DAO -->
+	<bean id="baseDAO" class="org.erha.fgnote.dao.BaseDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!-- 用户 DAO -->
+	<bean id="userDAO" class="org.erha.fgnote.dao.impl.UserDAO"
+		parent="baseDAO" />
+	<bean id="noteDAO" class="org.erha.fgnote.dao.impl.NoteDAO"
+		parent="baseDAO" />
+	<bean id="notesDAO" class="org.erha.fgnote.dao.impl.NotesDAO"
+		parent="baseDAO" />
+	<bean id="notebookDAO" class="org.erha.fgnote.dao.impl.NotebookDAO"
+		parent="baseDAO" />
+	<bean id="labelDAO" class="org.erha.fgnote.dao.impl.LabelDAO"
+		parent="baseDAO" />
+
+	<!-- ========================= 定义业务逻辑组件 ========================= -->
+	<!-- 用户管理 -->
+	<bean id="userService" class="org.erha.fgnote.service.impl.UserService">
+		<property name="userDAO" ref="userDAO"></property>
+	</bean>
+	<bean id="noteService" class="org.erha.fgnote.service.impl.NoteService">
+		<property name="noteDAO" ref="noteDAO"></property>
+	</bean>
+	<bean id="notesService" class="org.erha.fgnote.service.impl.NotesService">
+		<property name="notesDAO" ref="notesDAO"></property>
+	</bean>
+	<bean id="notebookService" class="org.erha.fgnote.service.impl.NotebookService">
+		<property name="notebookDAO" ref="notebookDAO"></property>
+	</bean>
+	<bean id="labelService" class="org.erha.fgnote.service.impl.LabelService">
+		<property name="labelDAO" ref="labelDAO"></property>
+	</bean>
+	<!-- ========================= 定义 action 组件 ========================= -->
+	<!-- 用户注册登录注销 action -->
+	<bean id="userAction" class="org.erha.fgnote.action.UserAction">
+		<property name="userService" ref="userService"></property>
+	</bean>
+	<!-- 一条笔记操作 action -->
+	<bean id="noteAction" class="org.erha.fgnote.action.NoteAction">
+		<property name="notebookService" ref="notebookService"></property>
+		<property name="noteService" ref="noteService"></property>
+	</bean>
+	<!-- 多条操作 action -->
+	<bean id="notesAction" class="org.erha.fgnote.action.NotesAction">
+		<property name="notesService" ref="notesService"></property>
+		<property name="notebookService" ref="notebookService"></property>
+		<property name="labelService" ref="labelService"></property>
+	</bean>
+	<!-- 笔记本操作 action -->
+	<bean id="notebookAction" class="org.erha.fgnote.action.NotebookAction">
+		<property name="notebookService" ref="notebookService"></property>
+	</bean>
+	<!-- 标签操作 action -->
+	<bean id="labelAction" class="org.erha.fgnote.action.LabelAction">
+		<property name="labelService" ref="labelService"></property>
+	</bean>
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

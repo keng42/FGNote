@@ -1,0 +1,70 @@
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation/DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="struts" extends="struts-default">
+		<!-- 定义全局 Result 映射 -->
+		<global-results>
+			<result name="login">/login.jsp</result>
+		</global-results>
+		<!-- 用户注册 action -->
+		<action name="register" class="userAction" method="register">
+			<result name="success">/login.jsp</result>
+			<result name="error">/register.jsp</result>
+		</action>
+		<!-- 用户登录 action -->
+		<action name="login" class="userAction">
+			<result name="success">/home.jsp</result>
+			<result name="error">/login.jsp</result>
+		</action>
+		<!-- 检查登陆 action -->
+		<!-- <action name="checkLogin" class="userAction"> <result name="success">/login_success.jsp</result> 
+			<result name="error">/login_error.jsp</result> </action> -->
+		<!-- 注销 action -->
+		<action name="logout" class="userAction" method="logout">
+			<result name="success">/login.jsp</result>
+		</action>
+		<!-- *************** 对一条笔记操作 *************** -->
+		<!-- 新建笔记 action -->
+		<action name="createNote" class="noteAction" method="createNote">
+			<result name="success">/home.jsp</result>
+		</action>
+		<!-- 显示笔记本选项 -->
+		<action name="displayNotebooks" class="noteAction" method="displayNotebooks">
+
+		</action>
+		<action name="newNote" class="noteAction" method="newNote">
+			<result name="success">/editer.jsp</result>
+		</action>
+		<action name="editnote" class="noteAction" method="editnote">
+			<result name="success">/editer.jsp</result>
+		</action>
+		<!-- *************** 对多条笔记操作 *************** -->
+		<!-- 显示所有笔记 action -->
+		<action name="displayAllNotes" class="notesAction" method="displayAllNotes">
+		</action>
+		<action name="getNotesOfNotebook" class="notesAction" method="getNotesOfNotebook">
+			<result name="success">/notesofbook.jsp</result>
+		</action>
+		<action name="getNotesOfLabel" class="notesAction" method="getNotesOfLabel">
+			<result name="success">/notesoflabel.jsp</result>
+		</action>
+		<action name="getAllQuicks" class="notesAction" method="getAllQuicks">
+			
+		</action>
+		<action name="search" class="notesAction" method="search">
+			<result name="success">/search.jsp</result>
+		</action>
+		<!-- *************** 对笔记本操作 *************** -->
+		<!-- 显示笔记本列表 action -->
+		<action name="fillNotebookMap" class="notebookAction" method="fillNotebookMap">
+			<result name="success">/home.jsp</result>
+		</action>
+		<!-- *************** 对标签操作 *************** -->
+		<!-- 显示标签列表 action -->
+		<action name="displayLabels" class="labelAction" method="displayLabels">
+			
+		</action>
+	</package>
+</struts>

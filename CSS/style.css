@@ -1,0 +1,362 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+.left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 580px;
+  height: 100%;
+}
+.right {
+  height: 100%;
+  margin-left: 580px;
+}
+.nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 80px;
+  height: 100%;
+  background-color: #F8F8F8;
+}
+.logo img {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 20px;
+}
+.nav-img {
+  width: 80px;
+  height: 50px;
+  line-height: 50px;
+  padding-left: 22px;
+}
+.nav-img:hover {
+  opacity: 0.7;
+}
+.quick {
+  margin-top: 80px;
+}
+.list {
+  height: 100%;
+  margin: auto;
+  border-left: 2px solid #EDECEC;
+  border-right: 2px solid #EDECEC;
+}
+.tools {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 55px;
+  background-color: white;
+  border-bottom: 1px solid #EDECEC;
+}
+.viewer {
+  width: 750px;
+  height: auto;
+  margin: auto;
+  margin-top: 106px;
+  padding-bottom: 50px;
+  /*background-color: #F8F8F8;*/
+  word-break: break-all;
+}
+.list-nav {
+  position: relative;
+  top: 0;
+  left: 80px;
+  width: 500px;
+  height: 138px;
+  border-bottom: 2px solid #EDECEC;
+}
+.note-list {
+  width: 500px;
+  position: fixed;
+  top: 140px;
+  bottom: 0;
+  margin-left: 80px;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+.note {
+  width: 90%;
+  height: 120px;
+  word-break: break-all;
+  border-bottom: 1px solid #EDECEC;
+  
+  padding: 25px;
+}
+.note:hover {
+  background-color: #3EBB6B;
+}
+.note-title{
+	height: 30px;
+	width: 100%;
+	overflow:hidden;
+	font: 20px/30px bold Times New Roman;
+}
+.note-top {
+	height: 25px;
+	width: 100%;
+	color: grey;
+}
+.note-action{
+	display: inline-block;
+	height:25px;
+	float:right;
+}
+.note-action img{
+	height:25px;
+}
+.note-sum{
+	height: 75px;
+	width: 100%;
+	overflow:hidden;
+	color: grey;
+}
+.title {
+  height: 100px;
+  font: 50px/100px Times New Roman;
+  color: #3EBB6B;
+  : center;
+}
+.list-operate {
+  padding: 30px 5px 5px 5px;
+  vertical-align: bottom;
+}
+.count {
+  text-align: left;
+  vertical-align: bottom;
+  font: 16px/20px Times New Roman;
+}
+.sort {
+  vertical-align: bottom;
+  float: right;
+  font: 16px/20px Times New Roman;
+  border: none;
+  outline: none;
+}
+.txt-search {
+  width: 350px;
+  height: 30px;
+  margin-top: 25px;
+  font: 26px/30px Times New Roman;
+  border: none;
+  outline: none;
+}
+
+/***************** editer ********************/
+
+html,
+body,
+.editer-main {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.editer-tools {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 55px;
+  background-color: white;
+  border-bottom: 1px solid #EDECEC;
+}
+.editer {
+  position: absolute;
+  top: 80px;
+  bottom: 20px;
+  width: 100%;
+  font: 20px/30px Times New Roman;
+}
+.md,
+.html {
+  width: 48%;
+  height: 100%;
+  float: left;
+  word-break: break-all;
+  margin: 0 1% 0 1%;
+}
+.md textarea {
+  width: 100%;
+  height: 100%;
+  font: 20px/30px Times New Roman;
+  resize: none;
+  outline: none;
+}
+.html {
+  background-color: #e5e5e5;
+  overflow: scroll;
+  overflow-x: hidden;
+  word-break: normal;
+  padding-top: 5px;
+}
+.menu {
+  margin-left: 80px;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+.menu-title {
+  font: 30px/80px Times New Roman;
+  color: grey;
+  padding-left: 10px;
+  border-bottom: 1px solid #EDECEC;
+}
+.list-title {
+  font: 26px/80px Times New Roman;
+  color: grey;
+  padding-left: 10px;
+}
+.notebook-list {
+  font: 22px/60px Times New Roman;
+  padding-left: 20px;
+  border-bottom: 1px solid #EDECEC;
+}
+.label-list,
+.quick-list {
+  padding-left: 10px;
+  width: auto;
+  font: 20px/40px Times New Roman;
+}
+.quick-list:hover,
+.label-list:hover,
+.notebook-list:hover {
+  background-color: #3EBB6B;
+}
+/*** editer-tools ***/
+
+.editer-tools {} .book-lab {
+  height: 55px;
+  width: 300px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+.folder {
+  height: 55px;
+  width: 120px;
+  float: left;
+  margin-left: 10px;
+  border: none;
+  outline: none;
+}
+.edit-label {
+  height: 55px;
+  width: 170px;
+  border: none;
+  outline: none;
+}
+.edit-label,
+.folder {
+  color: grey;
+  font: 18px/55px Times New Roman;
+}
+.div-title {
+  height: 55px;
+  position: absolute;
+  top: 0px;
+  left: 300px;
+  right: 150px;
+  background-color: red;
+}
+.editer-info {
+  height: 55px;
+  width: 150px;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+.edit-title {
+  width: 100%;
+  height: 55px;
+  margin-top: auto;
+  border: none;
+  outline: none;
+  text-align: center;
+  font: 25px/40px Times New Roman;
+}
+.editer-info a {
+  padding: 3px 20px 3px 20px;
+  background-color: #3EBB6B;
+  text-decoration: none;
+  border-radius: 5px;
+  font: 18px/30px Times New Roman;
+  color: white;
+}
+.editer-info a:hover {
+  background-color: #28A955;
+}
+.finish {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+/********************* login ****************************/
+
+.login-main {
+  width: 100%;
+  height: 100%;
+  background-color: #f3f3f3;
+}
+.login-top {
+  padding-top: 20px;
+  width: 100%;
+  height: 200px;
+  font: 40px/60px Times New Roman;
+  color: #3EBB6B;
+  text-align: center;
+}
+.login-logo {
+  width: 100px;
+}
+.login-box {
+  width: 400px;
+  height: 400px;
+  margin: auto;
+  padding: 30px;
+  background-color: white;
+  color: grey;
+}
+.input {
+  width: 380px;
+  height: 40px;
+  padding-left: 20px;
+  margin-bottom: 40px;
+  margin-top: 5px;
+  border: 1px solid #EDECEC;
+  font: Times New Roman;
+  font-size: 18px;
+}
+.auto-login {} .btn-login {
+  width: 100%;
+  height: 50px;
+  font-size: 20px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  background-color: #28A955;
+  color: white;
+  outline: none;
+  border: none;
+}
+.btn-login:hover {
+  opacity: 0.7;
+}
+.login-box a {
+  outline: none;
+  text-decoration: none;
+  color: grey;
+}
+
+.title{
+	width:100%;
+	overflow: scroll;
+	overflow-x: hidden;
+	outline: none;
+	border:none;
+}
